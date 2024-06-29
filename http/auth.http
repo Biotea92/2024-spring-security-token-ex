@@ -1,0 +1,30 @@
+### 회원가입
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "email": "abc@gmail.com",
+  "password": "1234",
+  "nickname": "woo",
+  "isAdmin": false
+}
+
+### 로그인
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "abc@gmail.com",
+  "password": "1234"
+}
+
+> {% client.global.set("accessToken", response.body.accessToken); %}
+
+### 사용자 페이지
+GET http://localhost:8080/user
+Authorization: Bearer {{accessToken}}
+
+### 관리자 페이지
+GET http://localhost:8080/admin
+Authorization: Bearer {{accessToken}}
